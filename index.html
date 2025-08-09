@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>WORKO - Job Search</title>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+      :root {
+        --worko-navy: #0d1b2a;
+        --worko-white: #ffffff;
+        --worko-light-gray: #f0f2f4;
+        --worko-gray: #637288;
+        --worko-dark-gray: #111418;
+        --worko-blue: #3a86ff;
+      }
+      body {
+        font-family: 'Work Sans', sans-serif;
+      }
+      .worko-certified {
+        background-color: var(--worko-navy);
+        color: var(--worko-white);
+      }
+      .worko-certified .job-title,
+      .worko-certified .job-description,
+      .worko-certified .worko-tag {
+        color: var(--worko-white);
+      }
+      .worko-certified .job-description {
+        opacity: 0.8;
+      }
+       .worko-certified .vietnamese-translation {
+        color: var(--worko-white);
+        opacity: 0.6;
+      }
+      .filter-chip.active {
+        background-color: var(--worko-navy);
+        color: var(--worko-white);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-gray-50">
+<div class="relative flex size-full min-h-screen flex-col justify-between group/design-root overflow-x-hidden">
+<div class="flex-grow">
+<header class="bg-white sticky top-0 z-10 shadow-sm">
+<div class="flex items-center p-4 pb-2 justify-between">
+<h1 class="text-2xl font-bold text-[var(--worko-dark-gray)]">WORKO</h1>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 bg-transparent text-[var(--worko-dark-gray)] gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+<div class="text-[var(--worko-dark-gray)]" data-icon="SlidersHorizontal" data-size="24px" data-weight="regular">
+<svg fill="currentColor" height="24px" viewBox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+<path d="M40,88H73a32,32,0,0,0,62,0h81a8,8,0,0,0,0-16H135a32,32,0,0,0-62,0H40a8,8,0,0,0,0,16Zm64-24A16,16,0,1,1,88,80,16,16,0,0,1,104,64ZM216,168H199a32,32,0,0,0-62,0H40a8,8,0,0,0,0,16h97a32,32,0,0,0,62,0h17a8,8,0,0,0,0-16Zm-48,24a16,16,0,1,1,16-16A16,16,0,0,1,168,192Z"></path>
+</svg>
+</div>
+</button>
+</div>
+<div class="px-4 py-3">
+<label class="flex flex-col min-w-40 h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-[var(--worko-gray)] flex border-none bg-[var(--worko-light-gray)] items-center justify-center pl-4 rounded-l-lg border-r-0" data-icon="MagnifyingGlass" data-size="24px" data-weight="regular">
+<svg fill="currentColor" height="24px" viewBox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+<path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+</svg>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-lg text-[var(--worko-dark-gray)] focus:outline-0 focus:ring-0 border-none bg-[var(--worko-light-gray)] focus:border-none h-full placeholder:text-[var(--worko-gray)] px-4 pl-2 text-base font-normal leading-normal" placeholder="Tìm kiếm công việc, công ty..." value=""/>
+</div>
+</label>
+</div>
+<div class="px-4 pb-4">
+<div class="flex gap-2 overflow-x-auto">
+<button class="filter-chip flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[var(--worko-light-gray)] px-4 text-sm font-medium text-[var(--worko-dark-gray)]">Nhà hàng</button>
+<button class="filter-chip flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[var(--worko-light-gray)] px-4 text-sm font-medium text-[var(--worko-dark-gray)]">Giảng dạy</button>
+<button class="filter-chip flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[var(--worko-light-gray)] px-4 text-sm font-medium text-[var(--worko-dark-gray)]">Dịch thuật</button>
+<button class="filter-chip flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-navy-700 text-white px-4 text-sm font-medium active">IT</button>
+<button class="filter-chip flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[var(--worko-light-gray)] px-4 text-sm font-medium text-[var(--worko-dark-gray)]">Thực tập</button>
+<button class="filter-chip flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[var(--worko-light-gray)] px-4 text-sm font-medium text-[var(--worko-dark-gray)]">Bán thời gian</button>
+</div>
+</div>
+</header>
+<main class="p-4 space-y-4">
+<h2 class="text-[var(--worko-dark-gray)] text-xl font-bold leading-tight tracking-tight">Việc làm cho người có Visa D2</h2>
+<div class="worko-certified rounded-xl p-4 flex flex-col gap-4 shadow-lg">
+<div class="flex items-start justify-between gap-4">
+<div class="flex flex-col gap-1 flex-grow">
+<p class="worko-tag text-xs font-bold uppercase tracking-wider">WORKO CERTIFIED</p>
+<p class="job-title text-lg font-bold leading-tight">소프트웨어 개발자</p>
+<p class="vietnamese-translation text-xs">Software Developer</p>
+<p class="job-description text-sm font-normal mt-1">네이버</p>
+<p class="vietnamese-translation text-xs opacity-60">Naver Corp</p>
+<p class="job-description text-sm font-normal mt-1">월급 ₩4,000,000</p>
+<p class="vietnamese-translation text-xs opacity-60">₩4,000,000 / tháng</p>
+</div>
+<div class="w-20 h-20 bg-center bg-no-repeat bg-cover rounded-lg flex-shrink-0" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAy6i9Y7ILX94SJAJ0Modn0fQI9888Q4sKgtk1SroB8TfqB-psIu7iKRVZRM8aZncqCPOJZe4x_HLw_brVlmE6NW8E1IAeXrzkLGespTVFR1xcZf6odFWSTz_4zQcS7RaCvvp1zLb_cdfRu64HGZhGSPBfkFjBfjnBgugprnliSjDJPV9xgqPoSRgJUyBKhtd2GXs1hOwP7vvtyG3PrCfMo9bGXQcpppeHHG_f9fs4H8LRnkDMAYrma8ff3hoMGh4GMteCZWNgtjUlq");'></div>
+</div>
+</div>
+<div class="bg-white rounded-xl p-4 flex flex-col gap-4 shadow-sm">
+<div class="flex items-start justify-between gap-4">
+<div class="flex flex-col gap-1 flex-grow">
+<p class="text-[var(--worko-dark-gray)] text-lg font-bold leading-tight">레스토랑 서버 (파트타임)</p>
+<p class="text-[var(--worko-gray)] text-xs">Phục vụ nhà hàng (Bán thời gian)</p>
+<p class="text-[var(--worko-gray)] text-sm font-normal mt-1">서울이츠</p>
+<p class="text-[var(--worko-gray)] text-xs opacity-60">Seoul Eats</p>
+<p class="text-[var(--worko-gray)] text-sm font-normal mt-1">시급 ₩10,030</p>
+<p class="text-[var(--worko-gray)] text-xs opacity-60">₩10,030 / giờ</p>
+</div>
+<div class="w-20 h-20 bg-center bg-no-repeat bg-cover rounded-lg flex-shrink-0" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDri_SwxRRQQpwuGqiewvdo-sQiCpOpChmrCZCRlizvqGxmssGemYiMkcJQPAeU6xT-elRQOSBcJwzL23E3otcU_gzsMzAqR9RxwOLsYNTGfctENQNsRROcCMca2k82zhUGbKG31NO0PI5M10ofcRFX7KAQt-IPGQ7SiJFclXy5FdxfeerQXbcR25DpK9rdxdsAolRASLDhH518gCQYjL-coWodcI0tfJLxETefykMWxqXaOPHlWQAK2CfDPIv2vLnEj3OhbD0Rn5tU");'></div>
+</div>
+</div>
+<div class="worko-certified rounded-xl p-4 flex flex-col gap-4 shadow-lg">
+<div class="flex items-start justify-between gap-4">
+<div class="flex flex-col gap-1 flex-grow">
+<p class="worko-tag text-xs font-bold uppercase tracking-wider">WORKO CERTIFIED</p>
+<p class="job-title text-lg font-bold leading-tight">유급 연구 조교</p>
+<p class="vietnamese-translation text-xs">Trợ lý nghiên cứu được trả lương</p>
+<p class="job-description text-sm font-normal mt-1">고려대학교</p>
+<p class="vietnamese-translation text-xs opacity-60">Đại học Korea</p>
+<p class="job-description text-sm font-normal mt-1">월급 ₩1,800,000 (장학금)</p>
+<p class="vietnamese-translation text-xs opacity-60">1.800.000 KRW / tháng (trợ cấp)</p>
+</div>
+<div class="w-20 h-20 bg-center bg-no-repeat bg-cover rounded-lg flex-shrink-0" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD65z5LSuvLZx9EvDSMjGm3CRXopJ-pKHI5qlbwB56n1B26zW7CSmT_yNAFC8wpIOwG9kAMHKiGT2FKVSn6QbuDQEnuPXiiFfEXcxczzkkPZLR53RFuc1R3axg8sD4Sj7IkHRabMQnLazrnnQx8MviO6B0rdPJxKbjaVYq3sf-iBTllw-CgTp1-Yoyu_2isF-E3NmacraJE0tKWwbZ0RjC1cregwws1pThVZ8U6cRjfHU3snqxRAdlGzB4oo50PUHS-6M_XN7TOPrsh");'></div>
+</div>
+</div>
+<div class="bg-white rounded-xl p-4 flex flex-col gap-4 shadow-sm">
+<div class="flex items-start justify-between gap-4">
+<div class="flex flex-col gap-1 flex-grow">
+<p class="text-[var(--worko-dark-gray)] text-lg font-bold leading-tight">편의점 직원</p>
+<p class="text-[var(--worko-gray)] text-xs">Nhân viên cửa hàng tiện lợi</p>
+<p class="text-[var(--worko-gray)] text-sm font-normal mt-1">CU - 홍대점</p>
+<p class="text-[var(--worko-gray)] text-xs opacity-60">CU - chi nhánh Hongdae</p>
+<p class="text-[var(--worko-gray)] text-sm font-normal mt-1">시급 ₩10,030</p>
+<p class="text-[var(--worko-gray)] text-xs opacity-60">₩10,030 / giờ</p>
+</div>
+<div class="w-20 h-20 bg-center bg-no-repeat bg-cover rounded-lg flex-shrink-0" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB8Dj1KxBLL9Z1JDIkgZJdCEo24GowAoYq8evH8bXg73VSvEzro-620kynkwoQFQs0w09c-CzEhKZw8OWuE4KoqxfRSpkT2soVdNdtorjdCUvhk9S3f6W1gt1gQxVDIXHlR7JiI4etiTrFUE37c4LIybDt-KurO96UBGGOU2pODttSCLz7cmX6kXBzx186wYa1xjrGvH8EDdKv6akMzNzT-21KAEOYqwgZ02SY-7Kjzxekk4uvSUiuGN35wV3l7U6nSiLbMN1fWwPEV");'></div>
+</div>
+</div>
+</main>
+</div>
+<footer class="sticky bottom-0 bg-white border-t border-[var(--worko-light-gray)]">
+<div class="flex justify-around items-center px-4 pt-2 pb-5">
+<a class="flex flex-col items-center justify-end gap-1 text-[var(--worko-blue)]" href="#">
+<div class="flex h-8 w-8 items-center justify-center">
+<svg fill="currentColor" height="28" viewBox="0 0 256 256" width="28" xmlns="http://www.w3.org/2000/svg">
+<path d="M224,115.55V208a16,16,0,0,1-16,16H168a16,16,0,0,1-16-16V168a8,8,0,0,0-8-8H112a8,8,0,0,0-8,8v40a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V115.55a16,16,0,0,1,5.17-11.78l80-75.48.11-.11a16,16,0,0,1,21.53,0,1.14,1.14,0,0,0,.11.11l80,75.48A16,16,0,0,1,224,115.55Z"></path>
+</svg>
+</div>
+<p class="text-xs font-semibold leading-normal">Home</p>
+</a>
+<a class="flex flex-col items-center justify-end gap-1 text-[var(--worko-gray)]" href="#">
+<div class="flex h-8 w-8 items-center justify-center">
+<svg fill="currentColor" height="28" viewBox="0 0 256 256" width="28" xmlns="http://www.w3.org/2000/svg">
+<path d="M200,112a8,8,0,0,1-8,8H152a8,8,0,0,1,0-16h40A8,8,0,0,1,200,112Zm-8,24H152a8,8,0,0,0,0,16h40a8,8,0,0,0,0-16Zm40-80V200a16,16,0,0,1-16,16H40a16,16,0,0,1-16-16V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56ZM216,200V56H40V200H216Zm-80.26-34a8,8,0,1,1-15.5,4c-2.63-10.26-13.06-18-24.25-18s-21.61,7.74-24.25,18a8,8,0,1,1-15.5-4,39.84,39.84,0,0,1,17.19-23.34,32,32,0,1,1,45.12,0A39.76,39.76,0,0,1,135.75,166ZM96,136a16,16,0,1,0-16-16A16,16,0,0,0,96,136Z"></path>
+</svg>
+</div>
+<p class="text-xs font-medium leading-normal">Visa</p>
+</a>
+<a class="flex flex-col items-center justify-end gap-1 text-[var(--worko-gray)]" href="#">
+<div class="flex h-8 w-8 items-center justify-center">
+<svg fill="currentColor" height="28" viewBox="0 0 256 256" width="28" xmlns="http://www.w3.org/2000/svg">
+<path d="M117.25,157.92a60,60,0,1,0-66.5,0A95.83,95.83,0,0,0,3.53,195.63a8,8,0,1,0,13.4,8.74,80,80,0,0,1,134.14,0,8,8,0,0,0,13.4-8.74A95.83,95.83,0,0,0,117.25,157.92ZM40,108a44,44,0,1,1,44,44A44.05,44.05,0,0,1,40,108Zm210.14,98.7a8,8,0,0,1-11.07-2.33A79.83,79.83,0,0,0,172,168a8,8,0,0,1,0-16,44,44,0,1,0-16.34-84.87,8,8,0,1,1-5.94-14.85,60,60,0,0,1,55.53,105.64,95.83,95.83,0,0,1,47.22,37.71A8,8,0,0,1,250.14,206.7Z"></path>
+</svg>
+</div>
+<p class="text-xs font-medium leading-normal">Community</p>
+</a>
+<a class="flex flex-col items-center justify-end gap-1 text-[var(--worko-gray)]" href="#">
+<div class="flex h-8 w-8 items-center justify-center">
+<svg fill="currentColor" height="28" viewBox="0 0 256 256" width="28" xmlns="http://www.w3.org/2000/svg">
+<path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"></path>
+</svg>
+</div>
+<p class="text-xs font-medium leading-normal">Profile</p>
+</a>
+</div>
+</footer>
+</div>
+
+</body></html>
